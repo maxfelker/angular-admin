@@ -7,3 +7,4 @@ dist
 bower_components
 coverage
 app/scripts/config.js
+*.log
