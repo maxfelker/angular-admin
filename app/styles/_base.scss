@@ -6,7 +6,15 @@ body {
 }
 
 .main-container {
-  margin-top:5rem;
+  padding-top:2rem;
+}
+
+.main-container .jumbotron {
+  background: #337ab7;
+}
+
+.main-container .jumbotron > * {
+  color:#FFF;
 }
 
 /* Loading */
