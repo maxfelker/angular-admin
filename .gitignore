@@ -1,0 +1,9 @@
+node_modules
+dist
+.tmp
+.idea
+.sass-cache
+.project
+bower_components
+coverage
+app/scripts/config.js

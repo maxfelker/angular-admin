@@ -1,0 +1,29 @@
+<crud-form
+  ng-if="assetsCtrl.isActionState('create') || assetsCtrl.isActionState('update')"
+  action-state="assetsCtrl.actionState"
+  form-name="assetForm"
+  crud-object="assetsCtrl.crudObject"
+  submit-handler="assetsCtrl.makeRequest()"
+  cancel-handler="assetsCtrl.showList()">
+</crud-form>
+
+<div class="list-container" ng-if="assetsCtrl.isActionState('list')">
+
+  <list-header
+    record-name="Asset"
+    button-action="Add"
+    create-handler="assetsCtrl.showCreateForm()"
+    animation="fadeInDown">
+  </list-header>
+
+  <p ng-show="!assetsCtrl.assetList.length" class="alert alert-info">No records were found. Maybe you need to create one?</p>
+
+  <list-table
+    ng-show="assetsCtrl.assetList.length > 0"
+    list="assetsCtrl.assetList"
+    delete-handler="assetsCtrl.deleteAsset"
+    edit-handler="assetsCtrl.showEditForm"
+    animation="fadeIn">
+  </list-table>
+
+</div>

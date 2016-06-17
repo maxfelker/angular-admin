@@ -1,0 +1,69 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <!-- build:css(.) styles/vendor.css -->
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast.css" />
+    <!-- endbower -->
+    <!-- endbuild -->
+    <!-- build:css(.tmp) styles/main.css -->
+    <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast-animations.min.css" />
+    <!-- endbuild -->
+  </head>
+  <body ng-app="centerpointAdminApp">
+    <!--[if lte IE 8]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+
+    <nav-bar></nav-bar>
+
+    <div class="main-container container view-animate-container">
+      <div ng-view="" class="view-animate"></div>
+    </div>
+
+    <page-footer ng-if="viewIsReady"></page-footer>
+
+    <loading-modal></loading-modal>
+    <toast></toast>
+
+    <google-analytics key=""></google-analytics>
+
+    <!-- build:js(.) scripts/vendor.js -->
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap-sass-official/assets/javascripts/bootstrap.js"></script>
+    <script src="bower_components/angular-animate/angular-animate.js"></script>
+    <script src="bower_components/angular-aria/angular-aria.js"></script>
+    <script src="bower_components/angular-cookies/angular-cookies.js"></script>
+    <script src="bower_components/angular-messages/angular-messages.js"></script>
+    <script src="bower_components/angular-resource/angular-resource.js"></script>
+    <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+    <script src="bower_components/angular-touch/angular-touch.js"></script>
+    <script src="bower_components/ngToast/dist/ngToast.js"></script>
+    <!-- endbower -->
+    <!-- endbuild -->
+
+    <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
+    <script src="scripts/controllers/main.js"></script>
+    <script src="scripts/services/asset-service.js"></script>
+    <script src="scripts/services/message-service.js"></script>
+    <script src="scripts/controllers/assets.js"></script>
+    <script src="scripts/directives/nav-bar.js"></script>
+    <script src="scripts/directives/google-analytics.js"></script>
+    <script src="scripts/directives/page-footer.js"></script>
+    <script src="scripts/directives/loading-modal.js"></script>
+    <script src="scripts/directives/crud-form.js"></script>
+    <script src="scripts/directives/list-header.js"></script>
+    <script src="scripts/directives/list-table.js"></script>
+    <!-- endbuild -->
+</body>
+</html>

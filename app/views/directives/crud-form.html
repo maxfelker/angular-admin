@@ -1,0 +1,60 @@
+<form name="{{formName}}" ng-submit="submitForm()">
+
+  <div class="view-header animated fadeInDown">
+
+    <p class="alert alert-danger animated bounceInDown" ng-if="whenErrorsArePresent()">
+      You have in your form errors and you SUCK!
+    </p>
+
+    <div class="row">
+
+      <div class="col-xs-8 col-sm-6">
+        <h1 class="capitalize"> {{ formName }}</h1>
+      </div>
+
+      <div class="col-xs-4 col-sm-6 text-right">
+
+        <button type="button" class="btn btn-default" ng-click="cancelHandler()">
+          <i class="fa fa-times"></i>
+          <span class="hidden-xs">Cancel</span>
+        </button>
+
+        <button type="submit" class="btn btn-success">
+          <i class="fa fa-plus"></i>
+          <span class="hidden-xs capitalize">{{ actionState }} Asset</span>
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <div class="row animated fadeIn">
+
+    <div class="col-xs-12 col-sm-6 col-md-4" ng-repeat="(fieldName, field) in crudObject track by $index" ng-if="fieldName !== 'id'">
+
+      <div ng-class="determineFormGroupClass(fieldName)" class="form-group" ng-switch on="field.type">
+
+        <label class="control-label capitalize" for="{{fieldName}}">{{ fieldName }}</label>
+
+        <!-- Text Input -->
+        <input autocomplete="false" ng-switch-when="text" name="{{fieldName}}" ng-model="field.value"
+          id="{{fieldName}}" type="text" class="form-control" placeholder="{{field.placeHolder}}"
+          value="{{field.value}}" required="{{field.required}}" />
+
+        <!-- Select -->
+        <select ng-switch-when="select" name="{{fieldName}}" ng-model="field.value"
+          id="{{fieldName}}" class="form-control" required="{{field.required}}">
+          <option class="capitalize">Select a {{ fieldName }}</option>
+          <option ng-repeat="option in field.options track by $index" value="{{option.value}}">
+            {{ option.text }}
+          </option>
+        </select>
+
+      </div>
+
+    </div>
+  </div>
+
+</form>

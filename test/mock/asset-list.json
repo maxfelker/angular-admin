@@ -1,0 +1,18 @@
+[
+  {
+    "id": 1,
+    "category": "Structures",
+    "name": "Phase Rig",
+    "prefab": "PhaseRig",
+    "createdAt": "2016-01-09T16:54:02.069Z",
+    "updatedAt": "2016-01-09T16:54:02.069Z",
+  },
+  {
+    "id": 2,
+    "category": "Structures",
+    "name": "Relay Chamber",
+    "prefab": "RelayChamber",
+    "createdAt": "2016-01-09T16:54:02.069Z",
+    "updatedAt": "2016-01-09T16:54:02.069Z",
+  }
+]

@@ -1,0 +1,37 @@
+<div class="table-responsive">
+
+  <table class="table table-bordered table-hover table-condensed animated {{ animation }}" ng-show="list.length > 0">
+
+    <thead>
+      <th class="capitalize" ng-repeat="(key, record) in list[0] track by $index">{{ key }}</th>
+      <th>Actions</th>
+    </thead>
+
+    <tbody>
+
+      <tr class="animate-repeat" ng-repeat="record in list track by $index">
+
+        <!-- TODO: Allow custom field outputs -->
+        <td ng-repeat="field in record track by $index">{{ field }}</td>
+
+        <td>
+
+          <!-- Edit Button -->
+          <button type="button" class="btn btn-primary btn-xs" ng-click="editRecord(record.id)">
+            <i class="fa fa-pencil"></i>
+          </button>
+
+          <!-- Delete Button -->
+          <button type="button" class="btn btn-danger btn-xs" ng-click="deleteRecord(record.id)">
+            <i class="fa fa-trash"></i>
+          </button>
+
+        </td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>

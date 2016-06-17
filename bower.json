@@ -1,0 +1,32 @@
+{
+  "name": "centerpoint-admin",
+  "version": "0.0.1",
+  "dependencies": {
+    "angular": "^1.4.9",
+    "bootstrap-sass-official": "^3.3.6",
+    "angular-animate": "^1.5.0",
+    "angular-aria": "^1.5.0",
+    "angular-cookies": "^1.5.0",
+    "angular-messages": "^1.5.0",
+    "angular-resource": "^1.5.0",
+    "angular-route": "^1.5.0",
+    "angular-sanitize": "^1.5.0",
+    "angular-touch": "^1.5.0",
+    "font-awesome": "~4.5.0",
+    "ngToast": "ngtoast#~1.5.6"
+  },
+  "devDependencies": {
+    "angular-mocks": "^1.5.0"
+  },
+  "appPath": "app",
+  "moduleName": "centerpointAdminApp",
+  "overrides": {
+    "bootstrap": {
+      "main": [
+        "less/bootstrap.less",
+        "dist/css/bootstrap.css",
+        "dist/js/bootstrap.js"
+      ]
+    }
+  }
+}

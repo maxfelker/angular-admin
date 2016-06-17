@@ -1,0 +1,30 @@
+/* View Header */
+
+.view-header {
+  padding:2rem 0;
+}
+
+.view-header h1 {
+  margin:0;
+}
+
+/* Form */
+.capitalize {
+  text-transform: capitalize;
+}
+
+.animate-repeat.ng-hide-add{
+  animation: slideOutLeft 0.3s;
+}
+
+/*.animate-repeat.ng-enter {
+  animation: fadeIn 1.3s;
+  opacity:0;
+}
+.animate-repeat.ng-enter-stagger {
+  transition-delay: 0.1s;
+  transition-duration: 0s;
+}
+.animate-repeat.ng-enter.ng-enter-active {
+  opacity: 1;
+}*/

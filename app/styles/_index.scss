@@ -1,0 +1,26 @@
+.main-container{
+  margin-top:5em;
+}
+
+.centerpoint-logo{
+  opacity: 0.5;
+}
+
+.white{
+  color:white;
+  opacity: 0.6;
+  font-style: italic;
+}
+
+.view-animate-container {
+  position:relative;
+  overflow:hidden;
+}
+
+.view-animate.ng-enter{
+  animation:fadeIn 0.3s;
+}
+
+.view-animate.ng-leave {
+  display:none;
+}
