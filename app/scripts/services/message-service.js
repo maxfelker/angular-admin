@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name centerpointAdminApp.messageService
+ * @name adminApp.messageService
  * @description
  * # messageService
- * Service in the centerpointAdminApp.
+ * Service in the adminApp.
  */
-angular.module('centerpointAdminApp').config(['ngToastProvider', function(ngToast) {
+angular.module('adminApp').config(['ngToastProvider', function(ngToast) {
     ngToast.configure({
       animation: 'fade'
     });

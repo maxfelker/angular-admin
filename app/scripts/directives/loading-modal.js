@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name centerpointAdminApp.directive:loadingModal
+ * @name adminApp.directive:loadingModal
  * @description
  * # loadingModal
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .directive('loadingModal', function() {
     return {
       templateUrl: '/views/directives/loading-modal.html',

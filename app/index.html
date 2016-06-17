@@ -16,7 +16,7 @@
     <link rel="stylesheet" href="bower_components/ngToast/dist/ngToast-animations.min.css" />
     <!-- endbuild -->
   </head>
-  <body ng-app="centerpointAdminApp">
+  <body ng-app="adminApp">
     <!--[if lte IE 8]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
@@ -27,7 +27,7 @@
       <div ng-view="" class="view-animate"></div>
     </div>
 
-    <page-footer ng-if="viewIsReady"></page-footer>
+    <footer ng-if="viewIsReady"></footer>
 
     <loading-modal></loading-modal>
     <toast></toast>

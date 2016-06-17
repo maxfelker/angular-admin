@@ -1,12 +1,12 @@
 'use strict';
 /**
  * @ngdoc function
- * @name centerpointAdminApp.controller:AssetListCtrl
+ * @name adminApp.controller:AssetListCtrl
  * @description
  * # AssetListCtrl
- * Controller of the centerpointAdminApp
+ * Controller of the adminApp
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .controller('AssetsCtrl', function($scope, $q, $filter, assetService, messageService) {
 
     var $this = this;

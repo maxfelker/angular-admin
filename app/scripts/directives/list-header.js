@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name centerpointAdminApp.directive:listHeader
+ * @name adminApp.directive:listHeader
  * @description
  * # listHeader
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .directive('listHeader', function() {
     return {
       scope: {

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name centerpointApp.controller:MainCtrl
+ * @name adminApp.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the centerpointApp
+ * Controller of the adminApp
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .controller('MainCtrl', function($scope) {
     this.init = function() {
       $scope.$parent.viewIsReady = true;

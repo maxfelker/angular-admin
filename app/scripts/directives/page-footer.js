@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc directive
- * @name centerpointAdminApp.directive:pageFooter
+ * @name adminApp.directive:pageFooter
  * @description
- * # pageFooter
+ * # footer
  */
-angular.module('centerpointAdminApp')
-  .directive('pageFooter', function() {
+angular.module('adminApp')
+  .directive('page-footer', function() {
     return {
-      templateUrl: '/views/directives/page-footer.html',
+      templateUrl: '/views/directives/footer.html',
       restrict: 'E'
     };
   });

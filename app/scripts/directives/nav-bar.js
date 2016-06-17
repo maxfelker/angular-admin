@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name centerpointAdminApp.directive:navBar
+ * @name adminApp.directive:navBar
  * @description
  * # navBar
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .directive('navBar', function() {
 
     var controller = function($scope) {

@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name centerpointApp.assetService
+ * @name adminApp.assetService
  * @description
  * # assets
- * Service in the centerpointApp.
+ * Service in the adminApp.
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .service('assetService', function($resource) {
 
     var requestURL = 'http://localhost:4200/assets/:id';

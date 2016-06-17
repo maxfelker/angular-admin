@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name centerpointAdminApp.directive:crudForm
+ * @name adminApp.directive:crudForm
  * @description
  * # crudForm
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .directive('crudForm', function () {
 
     var controller = function($scope) {

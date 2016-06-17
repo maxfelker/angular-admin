@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name centerpointApp
+ * @name adminApp
  * @description
- * # centerpointApp
+ * # adminApp
  *
  * Main module of the application.
  */
 angular
-  .module('centerpointAdminApp', [
+  .module('adminApp', [
     'ngAnimate',
     'ngAria',
     'ngCookies',

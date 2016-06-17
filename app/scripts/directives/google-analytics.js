@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name centerpointAdminApp.directive:googleAnalytics
+ * @name adminApp.directive:googleAnalytics
  * @description
  * # googleAnalytics
  */
-angular.module('centerpointAdminApp')
+angular.module('adminApp')
   .directive('googleAnalytics', function() {
     return {
       scope: {
