@@ -1,29 +1,47 @@
-# centerpoint-admin
+Angular Boilerplate Admin
+===
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
 version 0.15.1.
 
-You must run a local copy of the [centerpoint-api](https://github.com/maxatbrs/centerpoint-api) to work with data
+## Setup
 
-## Run and Build App
+First, download the project:
 
-To run
+```bash
+$ curl -LOk https://github.com/BigRoomStudios/angular-admin/archive/master.zip
+$ unzip master.zip
+$ mv angular-admin-master/ my-project/
+$ cd my-project/
+```
 
-    grunt serve
+Then install dependencies:
 
+```bash
+$ npm install
+$ bower install
+```
+
+### Running the App
+
+Run the app locally at http://localhost:9000
+
+```bash
+$ grunt serve
+```
+
+### Build
 To build and run locally
 
-    grunt build
-
-    cd dist/;
-
-    python -m SimpleHTTPServer
+```bash
+$ grunt build
+$ cd dist/;
+$ python -m SimpleHTTPServer
+```
 
 ## Testing
 
 Running `grunt test` will run the unit tests with karma. `grunt serve` will run this in real time.
-
-All code must have 100% test coverage.
 
 Coverage is reported in `coverage/` and an HTML report can be found at `coverage/report-html/index.html`
 
@@ -32,13 +50,6 @@ Below are some naming conventions of the project:
 
  - snake-case for element id, classes, and file names
  - camelCase for definitions
-
-### Branching / PR
-Here is the development flow:
-
- - Branch from master to feature/name or bug/name
- - Make a PR and assign it to another developer
- - Once approved, merge branch into master and cull branch
 
 ## Yeoman Recipes
 Below are a few helpful things when using yeoman to generate Angular code
