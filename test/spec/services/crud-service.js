@@ -1,28 +1,27 @@
 'use strict';
 
+var crudService;
+var httpBackend;
+var url = 'http://locahost/user';
+var mockUsers = [
+  {
+    name: 'Max'
+  },
+  {
+    name: 'Devin'
+  }
+];
+
 describe('The Crud Service', function() {
 
-  beforeEach(module('angularAdmin'));
-
-  var crudService;
-  var httpBackend;
-  var mockUsers = [
-    {
-      name: 'Max'
-    },
-    {
-      name: 'Devin'
-    }
-  ];
-
-  var url = 'http://locahost/user';
+  beforeEach(module('adminApp'));
 
   beforeEach(inject(function($injector) {
     crudService = $injector.get('crudService');
     httpBackend = $injector.get('$httpBackend');
   }));
 
-  describe('create()', function() {
+  describe('create() method', function() {
     it('should make a POST request and create a record', function() {
       var options = {
         url: url
@@ -39,7 +38,7 @@ describe('The Crud Service', function() {
   });
 
 
-  describe('retrieve()', function() {
+  describe('retrieve() method', function() {
 
     it('should make a GET request and return a single record', function() {
       var options = {
@@ -66,7 +65,7 @@ describe('The Crud Service', function() {
 
   });
 
-  describe('update', function() {
+  describe('update() method', function() {
     it('should make a PATCH request and update a record', function() {
       var options = {
         url: url
@@ -82,7 +81,7 @@ describe('The Crud Service', function() {
     });
   });
 
-  describe('delete', function() {
+  describe('delete() method', function() {
     it('should make a DELETE request and delete a record', function() {
       var options = {
         url: url
@@ -95,7 +94,7 @@ describe('The Crud Service', function() {
     });
   });
 
-  describe('get()', function() {
+  describe('get() method', function() {
 
     it('should make a GET request and return multiple records', function() {
       var options = {

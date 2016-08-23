@@ -19,7 +19,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngToast'
-  ])
+])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
