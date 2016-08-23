@@ -3,7 +3,7 @@
 describe('Directive: listTable', function() {
 
   // load the directive's module
-  beforeEach(module('centerpointAdminApp'));
+  beforeEach(module('adminApp'));
 
   var element,
     scope;

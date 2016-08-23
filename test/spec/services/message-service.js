@@ -3,7 +3,7 @@
 describe('Service: messageService', function () {
 
   // load the service's module
-  beforeEach(module('centerpointAdminApp'));
+  beforeEach(module('adminApp'));
 
   // instantiate service
   var messageService;
