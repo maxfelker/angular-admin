@@ -1,5 +1,5 @@
 {
-  "name": "angularAdmin",
+  "name": "adminApp",
   "private": true,
   "version": "0.1.0",
   "devDependencies": {
@@ -48,5 +48,7 @@
     "start": "grunt serve",
     "test": "grunt test"
   },
-  "dependencies": {}
+  "dependencies": {
+    "json-mock": "^0.1.0"
+  }
 }

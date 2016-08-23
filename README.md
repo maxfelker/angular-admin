@@ -39,6 +39,16 @@ $ cd dist/;
 $ python -m SimpleHTTPServer
 ```
 
+### Mock JSON Server
+
+This project uses [json-mock](https://github.com/therebelbeta/json-mock) to serve local data. To run the mock JSON server, open a new terminal window and:
+
+```bash
+$ json-mock stub.json
+```
+
+This will run the JSON mock API at [http://localhost:3000](http://localhost:3000)
+
 ## Testing
 
 Running `grunt test` will run the unit tests with karma. `grunt serve` will run this in real time.

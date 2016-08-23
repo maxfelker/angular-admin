@@ -32,6 +32,11 @@ angular
         controller: 'AssetsCtrl',
         controllerAs: 'assetsCtrl'
       })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl',
+        controllerAs: 'usersCtrl'
+      })
       .otherwise({
         redirectTo: '/'
       });
