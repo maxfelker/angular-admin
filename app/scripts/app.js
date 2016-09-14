@@ -19,7 +19,7 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngToast'
-  ])
+])
   .config(function($routeProvider) {
     $routeProvider
       .when('/', {
@@ -31,6 +31,11 @@ angular
         templateUrl: 'views/assets.html',
         controller: 'AssetsCtrl',
         controllerAs: 'assetsCtrl'
+      })
+      .when('/users', {
+        templateUrl: 'views/users.html',
+        controller: 'UsersCtrl',
+        controllerAs: 'usersCtrl'
       })
       .otherwise({
         redirectTo: '/'
