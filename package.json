@@ -47,7 +47,8 @@
   },
   "scripts": {
     "start": "grunt serve",
-    "test": "grunt test"
+    "test": "grunt test",
+    "postinstall" : "bower install"
   },
   "dependencies": {
     "json-mock": "^0.1.0"
