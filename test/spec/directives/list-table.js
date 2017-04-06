@@ -3,7 +3,7 @@
 describe('Directive: listTable', function() {
 
   // load the directive's module
-  beforeEach(module('adminApp'));
+  beforeEach(module('angularAdmin'));
 
   var element,
     scope;

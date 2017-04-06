@@ -4,7 +4,7 @@ describe('The Assets Management Controller', function() {
 
   // load the controller's module
   beforeEach(module(
-    'adminApp',
+    'angularAdmin',
     'served/asset-list.json'
   ));
 

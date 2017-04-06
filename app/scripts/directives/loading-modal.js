@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name adminApp.directive:loadingModal
+ * @name angularAdmin.directive:loadingModal
  * @description
  * # loadingModal
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .directive('loadingModal', function() {
     return {
       templateUrl: '/views/directives/loading-modal.html',

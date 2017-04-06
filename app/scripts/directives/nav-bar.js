@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name adminApp.directive:navBar
+ * @name angularAdmin.directive:navBar
  * @description
  * # navBar
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .directive('navBar', function() {
 
     var controller = function($scope) {

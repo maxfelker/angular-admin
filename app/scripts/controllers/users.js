@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name adminApp.controller:UsersCtrl
+ * @name angularAdmin.controller:UsersCtrl
  * @description
  * # UsersCtrl
- * Controller of the adminApp
+ * Controller of the angularAdmin
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .controller('UsersCtrl', function ($scope,crudService) {
 
     var $this = this;

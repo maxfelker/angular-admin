@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name adminApp.directive:pageFooter
+ * @name angularAdmin.directive:pageFooter
  * @description
  * # footer
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .directive('page-footer', function() {
     return {
       templateUrl: '/views/directives/footer.html',

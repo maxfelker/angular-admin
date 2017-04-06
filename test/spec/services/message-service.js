@@ -3,7 +3,7 @@
 describe('Service: messageService', function () {
 
   // load the service's module
-  beforeEach(module('adminApp'));
+  beforeEach(module('angularAdmin'));
 
   // instantiate service
   var messageService;

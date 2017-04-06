@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name adminApp.directive:crudView
+ * @name angularAdmin.directive:crudView
  * @description
  * # crudView
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .directive('crudView', function () {
     return {
       templateUrl: '/views/directives/crud-view.html',

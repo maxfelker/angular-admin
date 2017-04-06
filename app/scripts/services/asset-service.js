@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name adminApp.assetService
+ * @name angularAdmin.assetService
  * @description
  * # assets
- * Service in the adminApp.
+ * Service in the angularAdmin.
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .service('assetService', function($resource) {
 
     var requestURL = 'http://localhost:4200/assets/:id';

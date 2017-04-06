@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc service
- * @name adminApp.service:crudService
+ * @name angularAdmin.service:crudService
  * @description
  * Interacts with RESTful, CRUD oriented API endpoint
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .service('crudService', function ($resource) {
 
     var request = {

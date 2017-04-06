@@ -14,7 +14,7 @@ var mockUsers = [
 
 describe('The Crud Service', function() {
 
-  beforeEach(module('adminApp'));
+  beforeEach(module('angularAdmin'));
 
   beforeEach(inject(function($injector) {
     crudService = $injector.get('crudService');

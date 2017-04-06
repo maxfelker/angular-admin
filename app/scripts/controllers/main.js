@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc function
- * @name adminApp.controller:MainCtrl
+ * @name angularAdmin.controller:MainCtrl
  * @description
  * # MainCtrl
- * Controller of the adminApp
+ * Controller of the angularAdmin
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .controller('MainCtrl', function($scope) {
     this.init = function() {
       $scope.$parent.viewIsReady = true;

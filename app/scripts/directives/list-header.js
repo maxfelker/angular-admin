@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name adminApp.directive:listHeader
+ * @name angularAdmin.directive:listHeader
  * @description
  * # listHeader
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .directive('listHeader', function() {
     return {
       scope: {

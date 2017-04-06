@@ -3,7 +3,7 @@
 describe('The Crud Form', function () {
 
   beforeEach(module(
-    'adminApp',
+    'angularAdmin',
     'template-module'
   ));
 

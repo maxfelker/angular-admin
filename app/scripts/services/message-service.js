@@ -2,12 +2,12 @@
 
 /**
  * @ngdoc service
- * @name adminApp.messageService
+ * @name angularAdmin.messageService
  * @description
  * # messageService
- * Service in the adminApp.
+ * Service in the angularAdmin.
  */
-angular.module('adminApp').config(['ngToastProvider', function(ngToast) {
+angular.module('angularAdmin').config(['ngToastProvider', function(ngToast) {
     ngToast.configure({
       animation: 'fade'
     });

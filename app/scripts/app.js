@@ -2,14 +2,14 @@
 
 /**
  * @ngdoc overview
- * @name adminApp
+ * @name angularAdmin
  * @description
- * # adminApp
+ * # angularAdmin
  *
  * Main module of the application.
  */
 angular
-  .module('adminApp', [
+  .module('angularAdmin', [
     'ngAnimate',
     'ngAria',
     'ngCookies',

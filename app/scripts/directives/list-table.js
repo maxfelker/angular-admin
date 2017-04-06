@@ -2,11 +2,11 @@
 
 /**
  * @ngdoc directive
- * @name adminApp.directive:listTable
+ * @name angularAdmin.directive:listTable
  * @description
  * # listTable
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .directive('listTable', function() {
 
     var controller = function($scope) {

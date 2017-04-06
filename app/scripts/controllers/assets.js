@@ -1,48 +1,30 @@
 'use strict';
 /**
  * @ngdoc function
- * @name adminApp.controller:AssetListCtrl
+ * @name angularAdmin.controller:AssetListCtrl
  * @description
  * # AssetListCtrl
- * Controller of the adminApp
+ * Controller of the angularAdmin
  */
-angular.module('adminApp')
+angular.module('angularAdmin')
   .controller('AssetsCtrl', function($scope, $q, $filter, assetService, messageService) {
 
     var $this = this;
 
-    this.generateCrudObject = function() {
-      this.crudObject = {
-        name: {
-          type: 'text',
-          placeholder: 'My New Asset',
-          value: '',
-          required: true,
-        },
-        prefab: {
-          type: 'text',
-          placeholder: 'PrefabNameInUnity',
-          value: '',
-          required: true,
-        },
-        category: {
-          type: 'select',
-          options: [{
-            value: 1,
-            text: 'Structures'
-          }, {
-            value: 2,
-            text: 'Rocks'
-          }],
-          required: true
-        }
-      };
+    this.init = function() {
+      $scope.$parent.viewIsReady = false;
+      this.actionState = 'list';
+      this.generateCrudObject();
+      var promises = this.createInitPromises();
+      $q.all(promises).then($this.initSuccess, $this.errorHandler);
     };
 
+    // Sets the controllers asset list
     this.setAssetList = function(apiResponse) {
       $this.assetList = angular.copy(apiResponse);
     };
 
+    // Retrieves the asset list from the asset service
     this.getAssetList = function() {
       return assetService.getAssetList().then($this.setAssetList);
     };
@@ -67,57 +49,16 @@ angular.module('adminApp')
       $scope.$parent.viewIsReady = true;
     };
 
-    this.errorHandler = function(errorResponse) {
-      var url = '<b>' + errorResponse.config.url + '</b>';
-      var method = '<b>' + errorResponse.config.method + '</b>';
-      messageService.error('The server: ' + url + ' and the method: ' + method + ' are currently unavailable');
-    };
-
     this.createInitPromises = function() {
       return [
         $this.getAssetList()
       ];
     };
 
-    this.makeInitPromises = function() {
-      var promises = $this.createInitPromises();
-      $q.all(promises).then($this.initSuccess, $this.errorHandler);
-    };
-
-    this.init = function() {
-      $scope.$parent.viewIsReady = false;
-      this.actionState = 'list';
-      this.generateCrudObject();
-      this.makeInitPromises();
-    };
-
-    this.createAssetSuccess = function(apiResponse) {
-      messageService.created(apiResponse.name);
-      $this.init();
-    };
-
-    this.createAsset = function() {
-      var payload = {};
-      for (var fieldName in $this.crudObject) {
-        var field = $this.crudObject[fieldName];
-        payload[fieldName] = angular.copy(field.value);
-      }
-      return assetService.createAsset(payload).then($this.createAssetSuccess, $this.errorHandler);
-    };
-
-    this.updateAssetSuccess = function(apiResponse) {
-      messageService.updated(apiResponse.name);
-    };
-
-    this.updateAsset = function() {
-      var payload = {};
-      for (var fieldName in $this.crudObject) {
-        var field = $this.crudObject[fieldName];
-        if (fieldName !== 'id') {
-          payload[fieldName] = angular.copy(field.value);
-        }
-      }
-      return assetService.updateAsset(this.crudObject.id, payload).then($this.updateAssetSuccess, $this.errorHandler);
+    this.errorHandler = function(errorResponse) {
+      var url = '<b>' + errorResponse.config.url + '</b>';
+      var method = '<b>' + errorResponse.config.method + '</b>';
+      messageService.error( 'There was an issue with ' + url);
     };
 
     this.showCreateForm = function() {
@@ -151,6 +92,72 @@ angular.module('adminApp')
       }
       return false;
     };
+
+    /* --- CRUD --- */
+
+    // Creates the Crud Object which is used on the edit and create forms
+    this.generateCrudObject = function() {
+      this.crudObject = {
+        name: {
+          type: 'text',
+          placeholder: 'My Asset',
+          value: '',
+          required: true,
+        },
+        prefab: {
+          type: 'text',
+          placeholder: 'PrefabNameInUnity',
+          value: '',
+          required: true,
+        },
+        category: {
+          type: 'select',
+          options: [{
+            value: 1,
+            text: 'Structures'
+          }, {
+            value: 2,
+            text: 'Rocks'
+          }],
+          required: true
+        }
+      };
+    };
+
+    /* --- Create --- */
+
+    this.createAssetSuccess = function(apiResponse) {
+      messageService.created(apiResponse.name);
+      $this.init();
+    };
+
+    this.createAsset = function() {
+      var payload = {};
+      for (var fieldName in $this.crudObject) {
+        var field = $this.crudObject[fieldName];
+        payload[fieldName] = angular.copy(field.value);
+      }
+      return assetService.createAsset(payload).then($this.createAssetSuccess, $this.errorHandler);
+    };
+
+    /* --- Update --- */
+
+    this.updateAssetSuccess = function(apiResponse) {
+      messageService.updated(apiResponse.name);
+    };
+
+    this.updateAsset = function() {
+      var payload = {};
+      for (var fieldName in $this.crudObject) {
+        var field = $this.crudObject[fieldName];
+        if (fieldName !== 'id') {
+          payload[fieldName] = angular.copy(field.value);
+        }
+      }
+      return assetService.updateAsset(this.crudObject.id, payload).then($this.updateAssetSuccess, $this.errorHandler);
+    };
+
+    /* --- Delete --- */
 
     this.deleteAssetSuccess = function(id) {
       messageService.deleted('Asset ' + id);
