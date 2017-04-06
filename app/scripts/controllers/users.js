@@ -8,16 +8,15 @@
  * Controller of the angularAdmin
  */
 angular.module('angularAdmin')
-  .controller('UsersCtrl', function ($scope,crudService) {
+  .controller('UsersCtrl', function ($scope,$controller) {
 
+    angular.extend(this, $controller('CrudBaseControllerCtrl',{$scope:$scope}));
     var $this = this;
 
-    this.setUsers = function(apiResponse) {
-      $scope.users = angular.copy(apiResponse);
-    };
-
     this.getUsers = function() {
-      return crudService.get({url:'http://localhost:3000/users'}).then($this.setUsers);
+      $this.getRecords(function(users) {
+        $scope.users = angular.copy(users);
+      });
     };
 
     this.getUsers();
