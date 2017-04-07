@@ -14,11 +14,18 @@ angular.module('angularAdmin')
     var $this = this;
 
     this.getUsers = function() {
-      $this.getRecords(function(users) {
-        $scope.users = angular.copy(users);
+      return $this.getRecords().then(function(response) {
+        var users = angular.copy(response);
+        $scope.users = users.map(function(user){
+          return {
+            name: user.name.first + ' ' + user.name.last,
+            email: user.email,
+            profileImage: user.picture.large
+          }
+        })
       });
     };
 
-    this.getUsers();
+    this.init([$this.getUsers()]);
 
   });
