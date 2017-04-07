@@ -22,7 +22,7 @@ angular
 ])
   .config(function($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(false);
-    $locationProvider.hashPrefix("");
+    $locationProvider.hashPrefix('');
     $routeProvider
       .when('/', {
         templateUrl: 'views/main.html',
