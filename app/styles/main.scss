@@ -1,9 +1,7 @@
-$fa-font-path: "/bower_components/font-awesome/fonts";
+$fa-font-path: "../../bower_components/font-awesome/fonts";
 // bower:scss
-@import "font-awesome/scss/font-awesome.scss";
-@import "bootstrap-sass/assets/stylesheets/_bootstrap.scss";
+@import "../../bower_components/bootstrap-sass/assets/stylesheets/_bootstrap.scss";
 // endbower
-@import url("https://fonts.googleapis.com/css?family=Roboto+Condensed");
 @import "_animate.scss";
 @import "_index.scss";
 @import "_base.scss";

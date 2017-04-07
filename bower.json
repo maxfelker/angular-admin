@@ -1,5 +1,5 @@
 {
-  "name": "angularAdmin",
+  "name": "angular-admin",
   "version": "0.0.1",
   "dependencies": {
     "angular": "^1.5.6",
@@ -7,23 +7,16 @@
     "angular-aria": "^1.5.0",
     "angular-cookies": "^1.5.0",
     "angular-messages": "^1.5.0",
+    "angular-mocks": "^1.5.0",
     "angular-resource": "^1.5.0",
     "angular-route": "^1.5.0",
     "angular-sanitize": "^1.5.0",
     "angular-touch": "^1.5.0",
-    "font-awesome": "~4.6.0",
-    "ngToast": "ngtoast#~1.5.6",
+    "font-awesome": "~4.7.0",
     "bootstrap-sass": "^3.3.6",
-    "bootstrap": "^3.3.6"
-  },
-  "devDependencies": {
-    "angular-mocks": "^1.5.0"
+    "bootstrap": "^3.3.6",
+    "ngToast": "ngtoast#^2.0.0"
   },
   "appPath": "app",
-  "moduleName": "angularAdmin",
-  "resolutions": {
-    "angular-sanitize": "^1.5.0",
-    "angular": "1.5.7",
-    "angular-animate": "^1.5.0"
-  }
+  "moduleName": "angularAdmin"
 }
