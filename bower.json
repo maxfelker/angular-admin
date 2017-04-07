@@ -1,6 +1,6 @@
 {
   "name": "angular-admin",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "dependencies": {
     "angular": "^1.6.4",
     "angular-animate": "^1.6.0",
