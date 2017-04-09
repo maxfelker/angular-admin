@@ -31,8 +31,6 @@ var paths = {
     'bower_components/angular-sanitize/angular-sanitize.js',
     'bower_components/angular-touch/angular-touch.js',
     'bower_components/ngToast/dist/ngToast.js',
-    'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-    'bower_components/bootstrap/dist/js/bootstrap.js',
     'test/mock/**/*.js',
     'test/spec/**/*.js'
   ],

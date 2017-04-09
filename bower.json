@@ -18,5 +18,8 @@
     "ngToast": "ngtoast#^2.0.0"
   },
   "appPath": "app",
-  "moduleName": "angularAdmin"
+  "moduleName": "angularAdmin",
+  "devDependencies": {
+    "font-awesome": "^4.7.0"
+  }
 }

@@ -30,6 +30,7 @@
     "run-sequence": "^1.1.1",
     "jasmine-core": "^2.4.1",
     "json-mock": "^0.1.0",
+    "karma": "^1.6.0",
     "karma-coverage": "^1.1.1",
     "karma-firefox-launcher": "^1.0.1",
     "karma-jasmine": "*",
@@ -39,9 +40,6 @@
     "phantomjs": "^2.1.7",
     "phantomjs-prebuilt": "^2.1.12",
     "wiredep": "^4.0.0"
-  },
-  "dependencies": {
-    "karma": "1.6.0"
   },
   "engines": {
     "node": ">=0.10.0"
