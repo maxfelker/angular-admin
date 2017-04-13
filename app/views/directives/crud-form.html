@@ -1,6 +1,6 @@
 <form name="{{formName}}" ng-submit="submitForm()">
 
-  <div class="view-header animated fadeInDown">
+  <div class="view-header animated fadeIn">
 
     <p class="alert alert-danger animated bounceInDown" ng-if="whenErrorsArePresent()">
       You have in your form errors and you SUCK!
@@ -21,7 +21,7 @@
 
         <button type="submit" class="btn btn-success">
           <i class="fa fa-plus"></i>
-          <span class="hidden-xs capitalize">{{ actionState }} Asset</span>
+          <span class="hidden-xs capitalize">{{ actionState }} {{recordName}}</span>
         </button>
 
       </div>

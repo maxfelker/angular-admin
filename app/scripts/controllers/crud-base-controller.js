@@ -8,11 +8,14 @@
  * Controller of the angularAdmin
  */
 angular.module('angularAdmin')
-  .controller('CrudBaseControllerCtrl', function ($scope, crudService, messageService, $q) {
+  .controller('CrudBaseControllerCtrl', function ($scope, crudService, messageService, $q, $routeParams) {
 
     var $this = this;
 
-    this.init = function(promises, actionState) {
+    this.init = function(promises, crudObject, actionState) {
+      if(crudObject){
+          this.crudObject = angular.copy(crudObject);
+      }
       $scope.$parent.viewIsReady = false;
       this.actionState = actionState || 'list';
       $q.all(promises).then($this.initSuccess, $this.errorHandler);
@@ -23,14 +26,48 @@ angular.module('angularAdmin')
       $scope.$parent.viewIsReady = true;
     };
 
-    this.isActionState = function(actionState) {
-      return this.actionState === actionState;
-    };
-
     this.errorHandler = function(errorResponse) {
       var url = '<b>' + errorResponse.config.url + '</b>';
       var method = '<b>' + errorResponse.config.method + '</b>';
       messageService.error( 'There was an issue with ' + url);
+    };
+
+    /* Actions & State */
+    this.isActionState = function(actionState) {
+      return this.actionState === actionState;
+    };
+
+    this.setCrudObject = function(record) {
+      for (var fieldName in this.crudObject) {
+        this.crudObject[fieldName].value = record[fieldName];
+      }
+      this.crudObject.id = record.id;
+    };
+
+    this.showCreateForm = function() {
+      this.actionState = 'create';
+    };
+
+    this.findRecord = function(records, id) {
+      return records.filter(function(record) {
+        return record.id === parseInt(id);
+      })[0];
+    };
+
+    this.findRecordsIndex = function(records, id) {
+      var record = this.findRecord(records, id);
+      return records.indexOf(record);
+    };
+
+
+    this.makeRequest = function() {
+      if (this.isActionState('create')) {
+        this.createRecord();
+      }
+      if (this.isActionState('update')) {
+        this.updateRecord();
+      }
+      return false;
     };
 
     /* List Methods */
@@ -39,11 +76,37 @@ angular.module('angularAdmin')
       return crudService.get(this.serviceConfig);
     };
 
-    this.findRecordsIndex = function(records, id) {
-      var record = records.filter(function(record) {
-        return record.id === id;
-      })[0];
-      return records.indexOf(record);
+    /* Create Methods */
+
+    this.createRecordSuccess = function(apiResponse) {
+      messageService.created(apiResponse.name);
+      $this.init();
+    };
+
+    this.createRecord = function() {
+      var payload = {};
+      for (var fieldName in $this.crudObject) {
+        var field = $this.crudObject[fieldName];
+        payload[fieldName] = angular.copy(field.value);
+      }
+      return crudService.create(payload,this.serviceConfig).then($this.createRecordSuccess, $this.errorHandler);
+    };
+
+    /* --- Update --- */
+
+    this.updateRecordSuccess = function(apiResponse) {
+      messageService.updated(apiResponse.name);
+    };
+
+    this.updateRecord = function() {
+      var payload = {};
+      for (var fieldName in $this.crudObject) {
+        var field = $this.crudObject[fieldName];
+        if (fieldName !== 'id') {
+          payload[fieldName] = angular.copy(field.value);
+        }
+      }
+      return crudService.update(this.crudObject.id, payload).then($this.updateRecordSuccess, $this.errorHandler);
     };
 
     /* --- Delete Methods --- */

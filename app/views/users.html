@@ -1,8 +1,20 @@
-<div class="list-container" ng-if="usersCtrl.isActionState('list') ">
+{{ usersCtrl.actionState }}
+
+<crud-form
+  ng-if="usersCtrl.isActionState('create') || usersCtrl.isActionState('update')"
+  action-state="usersCtrl.actionState"
+  form-name="userForm"
+  record-name="User"
+  crud-object="usersCtrl.crudObject"
+  submit-handler="usersCtrl.makeRequest()"
+  cancel-handler="usersCtrl.showList()">
+</crud-form>
+
+<div class="list-container" ng-if="usersCtrl.isActionState('list') && viewIsReady ">
 
   <list-header
     record-name="User"
-    button-action="Add"
+    button-action="Create"
     create-handler="usersCtrl.showCreateForm()"
     animation="fadeIn">
   </list-header>

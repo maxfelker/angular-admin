@@ -48,6 +48,7 @@ angular.module('angularAdmin')
       scope: {
         actionState: '=',
         formName: '@',
+        recordName: '@',
         crudObject: '=',
         submitHandler: '&',
         cancelHandler: '&'
