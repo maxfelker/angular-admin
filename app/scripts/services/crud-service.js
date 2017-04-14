@@ -16,7 +16,7 @@ angular.module('angularAdmin')
           method: 'POST'
         },
         retrieve: {
-          method: 'GET'
+          method: 'GET',
         },
         update: {
           method: 'PATCH'
@@ -39,6 +39,7 @@ angular.module('angularAdmin')
     };
 
     this.setActions = function(method,options) {
+
       if( angular.isDefined(options.isArray) ) {
         request.actions[method].isArray = options.isArray;
       }
@@ -62,8 +63,8 @@ angular.module('angularAdmin')
     };
 
     this.retrieve = function (id, options) {
-      var requestResource = this.generateResource('get', options);
-      return requestResource.get({id: id}).$promise;
+      var requestResource = this.generateResource('retrieve', options);
+      return requestResource.retrieve({id: id}).$promise;
     };
 
     this.update = function (id,payload,options) {

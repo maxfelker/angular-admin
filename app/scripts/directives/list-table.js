@@ -25,7 +25,7 @@ angular.module('angularAdmin')
         list: '=',
         animation: '@',
         deleteHandler: '=',
-        editHandler: '='
+        route: '@'
       },
       controller: controller,
       templateUrl: '/views/directives/list-table.html',

@@ -46,6 +46,7 @@ angular.module('angularAdmin')
     angular.extend(this, $controller('CrudBaseControllerCtrl',{$scope:$scope}));
     var $this = this;
 
+    // TODO: move service config to factory, pass that to controller
     this.serviceConfig = {
         url: 'http://localhost:3000/users'
     };
@@ -60,21 +61,18 @@ angular.module('angularAdmin')
       }
     };
 
+    this.getUser = function() {
+      return $this.getRecord().then(function(response) {
+        var user = angular.copy(response);
+        $this.setCrudObject($this.transformUser(user));
+      });
+    };
+
     this.getUsers = function() {
       return $this.getRecords().then(function(response) {
         var users = angular.copy(response);
         $scope.users = users.map($this.transformUser)
       });
-    };
-
-    this.showEditForm = function(id) {
-        $this.setCrudObject($this.transformUser(record));
-        $this.actionState = 'update';
-    };
-
-    this.showList = function() {
-      delete this.crudObject.id;
-      this.init([$this.getUsers()]);
     };
 
     this.updateUser = function(id) {
@@ -85,6 +83,13 @@ angular.module('angularAdmin')
       return $this.removeRecord(id);
     };
 
-    this.init([$this.getUsers()],crudObject);
+    this.init({
+      list: [
+        $this.getUsers
+      ],
+      update: [
+        $this.getUser
+      ]
+    },crudObject);
 
   });

@@ -12,13 +12,19 @@ angular.module('angularAdmin')
 
     var $this = this;
 
-    this.init = function(promises, crudObject, actionState) {
+    this.init = function(promises, crudObject) {
+      this.actionState = 'list';
+      if($routeParams.id) {
+        this.actionState = 'update';
+      }
       if(crudObject){
           this.crudObject = angular.copy(crudObject);
       }
       $scope.$parent.viewIsReady = false;
-      this.actionState = actionState || 'list';
-      $q.all(promises).then($this.initSuccess, $this.errorHandler);
+      var initPromises = promises[this.actionState].map(function (fn){
+        return fn();
+      });
+      $q.all(initPromises).then($this.initSuccess, $this.errorHandler);
     };
 
     this.initSuccess = function() {
@@ -76,6 +82,10 @@ angular.module('angularAdmin')
       return crudService.get(this.serviceConfig);
     };
 
+    this.getRecord = function() {
+      return crudService.retrieve($routeParams.id,this.serviceConfig);
+    };
+
     /* Create Methods */
 
     this.createRecordSuccess = function(apiResponse) {
@@ -106,7 +116,7 @@ angular.module('angularAdmin')
           payload[fieldName] = angular.copy(field.value);
         }
       }
-      return crudService.update(this.crudObject.id, payload).then($this.updateRecordSuccess, $this.errorHandler);
+      return crudService.update($routeParams.id, payload,this.serviceConfig).then($this.updateRecordSuccess, $this.errorHandler);
     };
 
     /* --- Delete Methods --- */

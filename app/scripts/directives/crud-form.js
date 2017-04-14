@@ -51,7 +51,7 @@ angular.module('angularAdmin')
         recordName: '@',
         crudObject: '=',
         submitHandler: '&',
-        cancelHandler: '&'
+        route: '@'
       },
       templateUrl: '/views/directives/crud-form.html',
       restrict: 'E'

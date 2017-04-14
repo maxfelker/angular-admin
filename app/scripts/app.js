@@ -37,7 +37,7 @@ angular
         controller: 'UsersCtrl',
         controllerAs: 'usersCtrl'
       })
-      .when('/users/:userId', {
+      .when('/users/:id', {
         templateUrl: 'views/users.html',
         controller: 'UsersCtrl',
         controllerAs: 'usersCtrl'

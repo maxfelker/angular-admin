@@ -1,15 +1,4 @@
-{{ usersCtrl.actionState }}
-
-<crud-form
-  ng-if="usersCtrl.isActionState('create') || usersCtrl.isActionState('update')"
-  action-state="usersCtrl.actionState"
-  form-name="userForm"
-  record-name="User"
-  crud-object="usersCtrl.crudObject"
-  submit-handler="usersCtrl.makeRequest()"
-  cancel-handler="usersCtrl.showList()">
-</crud-form>
-
+<!-- List View -->
 <div class="list-container" ng-if="usersCtrl.isActionState('list') && viewIsReady ">
 
   <list-header
@@ -25,8 +14,20 @@
     ng-show="users.length > 0"
     list="users"
     delete-handler="usersCtrl.deleteUser"
-    edit-handler="usersCtrl.showEditForm"
+    route="users"
     animation="fadeIn">
   </list-table>
 
 </div>
+
+<!-- Create / Update View -->
+<crud-form
+  ng-if="usersCtrl.isActionState('create') || usersCtrl.isActionState('update')"
+  action-state="usersCtrl.actionState"
+  form-name="userForm"
+  record-name="User"
+  route="users"
+  crud-object="usersCtrl.crudObject"
+  submit-handler="usersCtrl.makeRequest()"
+  cancel-handler="usersCtrl.showList()">
+</crud-form>
