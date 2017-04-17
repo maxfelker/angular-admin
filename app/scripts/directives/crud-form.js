@@ -9,32 +9,32 @@
 angular.module('angularAdmin')
   .directive('crudForm', function () {
 
-    var controller = function($scope) {
+    var controller = function ($scope) {
 
       $scope.formData = [];
 
-      $scope.whenErrorsArePresent = function() {
+      $scope.whenErrorsArePresent = function () {
         return $scope[$scope.formName].$submitted && !$scope.validateForm();
       };
 
-      $scope.validateForm = function() {
+      $scope.validateForm = function () {
         return $scope[$scope.formName].$valid;
       };
 
-      $scope.submitForm = function() {
-        if( $scope.validateForm() ) {
+      $scope.submitForm = function () {
+        if ($scope.validateForm()) {
           $scope[$scope.actionState + 'Handler']();
         }
       };
 
-      $scope.determineFormGroupClass = function(fieldName) {
+      $scope.determineFormGroupClass = function (fieldName) {
         var formToCheck = $scope[$scope.formName];
         var fieldToCheck = formToCheck[fieldName];
-        if( fieldToCheck.$valid && fieldToCheck.$dirty ||
+        if (fieldToCheck.$valid && fieldToCheck.$dirty ||
           fieldToCheck.$valid && formToCheck.$submitted) {
           return 'has-success';
         }
-        if( fieldToCheck.$invalid && fieldToCheck.$dirty ||
+        if (fieldToCheck.$invalid && fieldToCheck.$dirty ||
           fieldToCheck.$invalid && formToCheck.$submitted) {
           return 'has-warning';
         }
@@ -46,7 +46,7 @@ angular.module('angularAdmin')
     return {
       link: controller,
       scope: {
-        actionState: '=',
+        actionState: '@',
         formName: '@',
         recordName: '@',
         crudObject: '=',
