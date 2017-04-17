@@ -1,9 +1,34 @@
-<div class="list-container">
+<!-- List View -->
+<div class="list-container" ng-if="usersCtrl.isActionState('list') && viewIsReady ">
+
+  <list-header
+    record-name="User"
+    button-action="Create"
+    create-handler="usersCtrl.showCreateForm()"
+    animation="fadeIn">
+  </list-header>
+
+  <p ng-show="!users.length" class="alert alert-info">No records were found. Maybe you need to create one?</p>
 
   <list-table
-    ng-if="users.length > 0"
+    ng-show="users.length > 0"
     list="users"
+    delete-handler="usersCtrl.deleteUser"
+    route="users"
     animation="fadeIn">
   </list-table>
 
 </div>
+
+<!-- Create / Update View -->
+<crud-form
+  ng-if="usersCtrl.isActionState('create') || usersCtrl.isActionState('update')"
+  action-state="usersCtrl.actionState"
+  form-name="userForm"
+  record-name="User"
+  route="users"
+  crud-object="usersCtrl.crudObject"
+  create-handler="usersCtrl.createUser()"
+  update-handler="usersCtrl.updateUser()"
+  cancel-handler="usersCtrl.showList()">
+</crud-form>

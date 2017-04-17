@@ -18,9 +18,9 @@
         <td>
 
           <!-- Edit Button -->
-          <button type="button" class="btn btn-primary btn-xs" ng-click="editRecord(record.id)">
+          <a ng-href="#/{{route}}/{{record.id}}" type="button" class="btn btn-primary btn-xs">
             <i class="fa fa-pencil"></i>
-          </button>
+          </a>
 
           <!-- Delete Button -->
           <button type="button" class="btn btn-danger btn-xs" ng-click="deleteRecord(record.id)">
