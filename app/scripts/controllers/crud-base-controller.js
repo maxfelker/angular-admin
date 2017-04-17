@@ -82,6 +82,7 @@ angular.module('angularAdmin')
       if (window.confirm('Are you sure you want to remove this record?')) {
         return crudService.delete(id, this.serviceConfig).catch($this.errorHandler);
       }
+      return $q.reject();
     };
 
   });

@@ -129,7 +129,7 @@ describe('The Users Management Controller', function() {
           spyOn(window, 'confirm').and.callThrough();
           UsersCtrl.deleteUser(1);
           expect(window.confirm).toHaveBeenCalledWith(
-            'Are you sure you want to remove this User?');
+            'Are you sure you want to remove this record?');
         });
 
         it('should call crudService.deleteUser', function() {

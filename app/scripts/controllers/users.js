@@ -91,7 +91,6 @@ angular.module('angularAdmin')
     };
 
     this.deleteUser = function(id) {
-      console.log(id);
       return $this.removeRecord(id).then( function() {
           messageService.deleted('User ' + id);
           $this.getUsers();
