@@ -43,14 +43,6 @@
       "picture": {
         "large": "https://randomuser.me/api/portraits/women/13.jpg"
       }
-    },
-    {
-      "name": {
-        "first": "Geoff",
-        "last": "Keaton"
-      },
-      "email": "geoffice@bigroomstudios.com",
-      "id": 5
     }
   ]
 }

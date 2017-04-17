@@ -50,6 +50,10 @@ angular.module('angularAdmin')
       this.crudObject.id = record.id;
     };
 
+    this.showCreateForm = function() {
+        this.actionState = 'create';
+    };
+
     /* List Methods */
 
     this.getRecords = function() {
@@ -69,8 +73,7 @@ angular.module('angularAdmin')
     /* --- Update --- */
 
     this.updateRecord = function(payload) {
-      return crudService.update($routeParams.id, payload, this.serviceConfig)
-        .then($this.updateRecordSuccess, $this.errorHandler);
+      return crudService.update($routeParams.id, payload, this.serviceConfig).catch($this.errorHandler);
     };
 
     /* --- Delete Methods --- */

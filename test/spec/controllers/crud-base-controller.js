@@ -17,7 +17,6 @@ describe('Controller: CrudBaseControllerCtrl', function () {
     });
   }));
 
-  it('should attach a list of awesomeThings to the scope', function () {
-    expect(CrudBaseControllerCtrl.awesomeThings.length).toBe(3);
+  it('init', function () {
   });
 });
