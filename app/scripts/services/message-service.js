@@ -43,7 +43,7 @@ angular.module('angularAdmin').config(['ngToastProvider', function(ngToast) {
     };
 
     this.created = function(name) {
-      var msg = 'You have created a new ' + name;
+      var msg = 'You created ' + name;
       return this.display('success', msg);
     };
 

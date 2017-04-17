@@ -8,7 +8,7 @@
  * Controller of the angularAdmin
  */
 angular.module('angularAdmin')
-  .controller('UsersCtrl', function ($scope,$controller) {
+  .controller('UsersCtrl', function ($scope,$controller, messageService, $location) {
 
     var crudObject = {
         name: {
@@ -22,26 +22,8 @@ angular.module('angularAdmin')
           placeholder: 'youremail@host.com',
           value: '',
           required: true,
-        },
-        profileImage: {
-          type: 'text',
-          placeholder: 'http://placehold.it/69x69',
-          value: '',
-          required: true,
         }
-        /*,
-        category: {
-          type: 'select',
-          options: [{
-            value: 1,
-            text: 'Developer'
-          }, {
-            value: 2,
-            text: 'n00b'
-          }],
-          required: true
-        }*/
-      };
+    };
 
     angular.extend(this, $controller('CrudBaseControllerCtrl',{$scope:$scope}));
     var $this = this;
@@ -56,10 +38,11 @@ angular.module('angularAdmin')
       return {
         id: user.id,
         name: !user.name.first ? user.name : user.name.first + ' ' + user.name.last,
-        email: user.email,
-        profileImage: user.profileImage || user.picture.large
+        email: user.email
       }
     };
+
+    /* Get Users */
 
     this.getUser = function() {
       return $this.getRecord().then(function(response) {
@@ -75,21 +58,54 @@ angular.module('angularAdmin')
       });
     };
 
-    this.updateUser = function(id) {
-      return $this.updateRecord(id);
+    /* Create Users */
+
+    this.createUser = function() {
+      var payload = {
+        name: {
+            first: $this.crudObject.name.value.split(' ')[0],
+            last: $this.crudObject.name.value.split(' ')[1]
+        },
+        email: $this.crudObject.email.value,
+
+      };
+      return $this.createRecord(payload).then(function(user) {
+          messageService.created(user.name.first);
+          $location.path('/users/' + user.id);
+      });
+    };
+
+    /* Update User */
+    this.updateUser = function() {
+      var payload = {
+        name: {
+            first: $this.crudObject.name.value.split(' ')[0],
+            last: $this.crudObject.name.value.split(' ')[1]
+        },
+        email: $this.crudObject.email.value
+      };
+      return $this.updateRecord(payload).then(function(user) {
+          messageService.updated(user.name.first);
+          $location.path('/users/' + user.id);
+      });
     };
 
     this.deleteUser = function(id) {
-      return $this.removeRecord(id);
+      return $this.removeRecord(id).then( function() {
+          messageService.deleted('User ' + id);
+          $this.getUsers();
+      });
     };
 
-    this.init({
+    this.statePromises = {
       list: [
         $this.getUsers
       ],
       update: [
         $this.getUser
       ]
-    },crudObject);
+    };
+
+    this.init(this.statePromises,crudObject);
 
   });

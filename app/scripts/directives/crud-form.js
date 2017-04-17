@@ -23,7 +23,7 @@ angular.module('angularAdmin')
 
       $scope.submitForm = function() {
         if( $scope.validateForm() ) {
-          $scope.submitHandler();
+          $scope[$scope.actionState + 'Handler']();
         }
       };
 
@@ -50,7 +50,8 @@ angular.module('angularAdmin')
         formName: '@',
         recordName: '@',
         crudObject: '=',
-        submitHandler: '&',
+        createHandler: '&',
+        updateHandler: '&',
         route: '@'
       },
       templateUrl: '/views/directives/crud-form.html',

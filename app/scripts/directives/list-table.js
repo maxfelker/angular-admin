@@ -12,7 +12,7 @@ angular.module('angularAdmin')
     var controller = function($scope) {
 
       $scope.deleteRecord = function(id) {
-        return $scope.deleteHandler($scope.list, id);
+        return $scope.deleteHandler(id);
       };
 
       $scope.editRecord = function(id) {
