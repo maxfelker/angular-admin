@@ -1,6 +1,6 @@
 <form name="{{formName}}" ng-submit="submitForm()">
 
-  <div class="view-header animated fadeInDown">
+  <div class="view-header animated fadeIn">
 
     <p class="alert alert-danger animated bounceInDown" ng-if="whenErrorsArePresent()">
       You have in your form errors and you SUCK!
@@ -14,14 +14,14 @@
 
       <div class="col-xs-4 col-sm-6 text-right">
 
-        <button type="button" class="btn btn-default" ng-click="cancelHandler()">
+        <a ng-href="#/{{route}}" class="btn btn-default">
           <i class="fa fa-times"></i>
           <span class="hidden-xs">Cancel</span>
-        </button>
+        </a>
 
         <button type="submit" class="btn btn-success">
           <i class="fa fa-plus"></i>
-          <span class="hidden-xs capitalize">{{ actionState }} Asset</span>
+          <span class="hidden-xs capitalize">{{ actionState }} {{recordName}}</span>
         </button>
 
       </div>

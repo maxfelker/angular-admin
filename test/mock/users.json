@@ -1,0 +1,46 @@
+[
+  {
+    "id": 1,
+    "name": {
+      "first": "Devin",
+      "last": "Ivy"
+    },
+    "email": "devin@bigroomstudios.com",
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/83.jpg"
+    }
+  },
+  {
+    "id": 2,
+    "name": {
+      "first": "Jared",
+      "last": "Donisvitch"
+    },
+    "email": "jared@bigroomstudios.com",
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/69.jpg"
+    }
+  },
+  {
+    "id": 3,
+    "name": {
+      "first": "Brian",
+      "last": "Leighton"
+    },
+    "email": "brain@bigroomstudios.com",
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/men/37.jpg"
+    }
+  },
+  {
+    "id": 4,
+    "name": {
+      "first": "Bek",
+      "last": "Louten"
+    },
+    "email": "bek@bigroomstudios.com",
+    "picture": {
+      "large": "https://randomuser.me/api/portraits/women/13.jpg"
+    }
+  }
+]
