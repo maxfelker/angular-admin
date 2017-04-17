@@ -19,8 +19,9 @@ angular
     'ngSanitize',
     'ngTouch',
     'ngToast'
-])
-  .config(function($routeProvider, $locationProvider) {
+  ])
+  .config(function ($routeProvider, $locationProvider, $compileProvider) {
+    //  $compileProvider.preAssignBindingsEnabled(true);
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('');
     $routeProvider
@@ -28,11 +29,6 @@ angular
         templateUrl: 'views/main.html',
         controller: 'MainCtrl',
         controllerAs: 'mainCtrl'
-      })
-      .when('/assets', {
-        templateUrl: 'views/assets.html',
-        controller: 'AssetsCtrl',
-        controllerAs: 'assetsCtrl'
       })
       .when('/users', {
         templateUrl: 'views/users.html',

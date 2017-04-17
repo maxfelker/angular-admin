@@ -1,22 +1,20 @@
 'use strict';
 
-describe('Controller: CrudBaseControllerCtrl', function () {
+describe('The CrudBaseControllerCtrl', function () {
 
-  // load the controller's module
+  var $scope;
+
   beforeEach(module('angularAdmin'));
 
-  var CrudBaseControllerCtrl,
-    scope;
-
-  // Initialize the controller and a mock scope
-  beforeEach(inject(function ($controller, $rootScope) {
-    scope = $rootScope.$new();
-    CrudBaseControllerCtrl = $controller('CrudBaseControllerCtrl', {
-      $scope: scope
-      // place here mocked dependencies
+  beforeEach(inject(function ($rootScope, $controller) {
+    $scope = $rootScope.$new();
+    $controller('CrudBaseControllerCtrl', {
+      $scope: $scope
     });
   }));
 
-  it('init', function () {
+  it('should init with the $parent scopes viewIsReady set to false', function () {
+    expect($scope.$parent.viewIsReady).toBeFalsy();
   });
+
 });
