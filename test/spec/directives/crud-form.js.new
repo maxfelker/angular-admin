@@ -1,0 +1,41 @@
+'use strict';
+
+fdescribe('The Crud Form', function () {
+
+  // load the directive's module
+  beforeEach(module('angularAdmin', 'ngHtml2Js'));
+
+  var crudFormElement;
+  var scope;
+  var crudFormController;
+
+  beforeEach(inject(function ($rootScope, $compile) {
+    scope = $rootScope.$new();
+    scope.actionState = 'create';
+    scope.testCrudObject = {
+      name: {
+        type: 'text',
+        placeholder: 'Tom Jones',
+        value: '',
+        required: true,
+      },
+      email: {
+        type: 'text',
+        placeholder: 'youremail@host.com',
+        value: '',
+        required: true,
+      }
+    };
+    crudFormElement = angular.element(
+      '<crud-form action-state="actionState" form-name="testForm" record-name="User" route="users" crud-object="testCrudObject"></crud-form>'
+    );
+    crudFormElement = $compile(crudFormElement)(scope);
+    scope.$digest();
+    crudFormController = crudFormElement.controller('crudForm');
+  }));
+
+  it('should make hidden crudFormElement visible', function () {
+    console.error(crudFormElement);
+    expect(crudFormElement).toBeDefined();
+  });
+});

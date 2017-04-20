@@ -31,8 +31,12 @@ var paths = {
     'bower_components/angular-sanitize/angular-sanitize.js',
     'bower_components/angular-touch/angular-touch.js',
     'bower_components/ngToast/dist/ngToast.js',
-    'test/mock/**/*.js',
-    'test/spec/**/*.js'
+
+    'test/spec/**/*.js',
+    'app/scripts/**/*.js',
+    'test/mock/**/*.json',
+    //location of templates
+    'app/views/**/*.html'
   ],
   karma: 'test/karma.conf.js',
   views: {
@@ -79,20 +83,23 @@ gulp.task('start:client', ['start:server', 'styles'], function () {
   openURL('http://localhost:9000');
 });
 
-gulp.task('start:server', function() {
+gulp.task('start:server', function () {
   $.connect.server({
     root: [yeoman.app, '.tmp'],
     livereload: true,
     // Change this to '0.0.0.0' to access the server from outside.
     port: 9000,
-    middleware:function(connect){
-      return [['/bower_components',
-        connect["static"]('./bower_components')]];
+    middleware: function (connect) {
+      return [
+        ['/bower_components',
+          connect["static"]('./bower_components')
+        ]
+      ];
     }
   });
 });
 
-gulp.task('start:server:test', function() {
+gulp.task('start:server:test', function () {
   $.connect.server({
     root: ['test', yeoman.app, '.tmp'],
     livereload: true,
@@ -123,13 +130,11 @@ gulp.task('watch', function () {
 });
 
 gulp.task('serve', function (cb) {
-  runSequence('clean:tmp',
-    ['lint:scripts'],
-    ['start:client'],
+  runSequence('clean:tmp', ['lint:scripts'], ['start:client'],
     'watch', cb);
 });
 
-gulp.task('serve:prod', function() {
+gulp.task('serve:prod', function () {
   $.connect.server({
     root: [yeoman.dist],
     livereload: true,
@@ -153,7 +158,7 @@ gulp.task('bower', function () {
       directory: 'bower_components',
       ignorePath: '..'
     }))
-  .pipe(gulp.dest(yeoman.app));
+    .pipe(gulp.dest(yeoman.app));
 });
 
 ///////////
@@ -169,13 +174,17 @@ gulp.task('client:build', ['html', 'styles'], function () {
   var cssFilter = $.filter('**/*.css');
 
   return gulp.src(paths.views.main)
-    .pipe($.useref({searchPath: [yeoman.app, '.tmp']}))
+    .pipe($.useref({
+      searchPath: [yeoman.app, '.tmp']
+    }))
     .pipe(jsFilter)
     .pipe($.ngAnnotate())
     .pipe($.uglify())
     .pipe(jsFilter.restore())
     .pipe(cssFilter)
-    .pipe($.minifyCss({cache: true}))
+    .pipe($.minifyCss({
+      cache: true
+    }))
     .pipe(cssFilter.restore())
     .pipe($.rev())
     .pipe($.revReplace())
@@ -190,15 +199,17 @@ gulp.task('html', function () {
 gulp.task('images', function () {
   return gulp.src(yeoman.app + '/images/**/*')
     .pipe($.cache($.imagemin({
-        optimizationLevel: 5,
-        progressive: true,
-        interlaced: true
+      optimizationLevel: 5,
+      progressive: true,
+      interlaced: true
     })))
     .pipe(gulp.dest(yeoman.dist + '/images'));
 });
 
 gulp.task('copy:extras', function () {
-  return gulp.src(yeoman.app + '/*/.*', { dot: true })
+  return gulp.src(yeoman.app + '/*/.*', {
+      dot: true
+    })
     .pipe(gulp.dest(yeoman.dist));
 });
 

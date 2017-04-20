@@ -3,7 +3,7 @@
 // Generated on 2016-01-09 using
 // generator-karma 1.0.0
 
-module.exports = function(config) {
+module.exports = function (config) {
   'use strict';
 
   config.set({
@@ -41,7 +41,7 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       stripPrefix: 'app',
-      moduleName: 'template-module'
+      moduleName: 'ngHtml2Js'
     },
 
     ngJson2JsPreprocessor: {

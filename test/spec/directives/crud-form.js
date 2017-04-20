@@ -2,40 +2,24 @@
 
 describe('The Crud Form', function () {
 
-  beforeEach(module(
-    'angularAdmin',
-    'template-module'
-  ));
-
   var element;
   var scope;
-  var compile;
+  var $compile;
   var form;
   var input;
   var isolatedScope;
-  var controller;
-  var config;
-
-  beforeEach(inject(function ($rootScope, $compile) {
-
-    scope = $rootScope.$new();
-    compile = $compile;
-    scope.testCreateHandler = jasmine.createSpy('testCreateHandler');
-
-    config = {
-      display: true,
-      actionState: 'create',
-      formName: 'myCrudForm',
-      crudObject: {
-        name: {
-          type: 'text',
-          required: true,
-          value: ''
-        }
+  var config = {
+    display: true,
+    actionState: 'create',
+    formName: 'myCrudForm',
+    crudObject: {
+      name: {
+        type: 'text',
+        required: true,
+        value: ''
       }
-    };
-
-  }));
+    }
+  };
 
   function createFormObject() {
     isolatedScope.myCrudForm = {
@@ -58,7 +42,7 @@ describe('The Crud Form', function () {
   function generateDirectiveTemplate() {
     var template = '<crud-form ';
     template += 'form-name="' + config.formName + '" ';
-    template += 'action-state="' + config.actionState + '" ';
+    template += 'action-state="actionState" ';
     //template += 'crud-object="' + config.crudObject + '" ';
     template += 'create-handler="testCreateHandler()" ';
     template += '></crud-form>';
@@ -67,25 +51,38 @@ describe('The Crud Form', function () {
 
   function compileDirective() {
     var template = angular.element(generateDirectiveTemplate());
-    element = compile(template)(scope);
+    element = $compile(template)(scope);
     scope.$digest();
+
     form = angular.element(element.find('form')[0]);
     input = angular.element(form.find('input')[0]);
-    controller = element.controller('crudForm');
     isolatedScope = element.isolateScope();
+
     createFormObject();
+    scope.$apply();
   }
+
+  beforeEach(module('angularAdmin'));
+  beforeEach(module('ngHtml2Js'));
+
+  beforeEach(inject(function ($injector) {
+
+    $compile = $injector.get('$compile');
+    scope = $injector.get('$rootScope');
+    scope.actionState = 'create';
+    //scope.testCreateHandler = jasmine.createSpy('testCreateHandler');
+
+  }));
 
   describe('when submitting the form', function () {
 
-    beforeEach(inject(function () {
+    beforeEach(function () {
       compileDirective();
-
       spyOn(isolatedScope, 'validateForm').and.callThrough();
       spyOn(isolatedScope, 'createHandler').and.callThrough();
       spyOn(isolatedScope, 'updateHandler').and.callThrough();
       isolatedScope.submitForm();
-    }));
+    });
 
     it('should validate the form', function () {
       expect(isolatedScope.validateForm).toHaveBeenCalled();
@@ -119,11 +116,11 @@ describe('The Crud Form', function () {
 
   describe('when determing a class for the field', function () {
 
-    beforeEach(inject(function () {
+    beforeEach(function () {
       compileDirective();
       isolatedScope.myCrudForm.name.$setViewValue('');
       scope.$digest();
-    }));
+    });
 
     it('should return no class initially', function () {
       var classTest = isolatedScope.determineFormGroupClass('name');

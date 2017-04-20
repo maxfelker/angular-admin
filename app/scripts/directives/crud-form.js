@@ -44,7 +44,7 @@ angular.module('angularAdmin')
     };
 
     return {
-      link: controller,
+      controller: controller,
       scope: {
         actionState: '=',
         formName: '@',

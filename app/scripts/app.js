@@ -20,8 +20,7 @@ angular
     'ngTouch',
     'ngToast'
   ])
-  .config(function ($routeProvider, $locationProvider, $compileProvider) {
-    //  $compileProvider.preAssignBindingsEnabled(true);
+  .config(function ($routeProvider, $locationProvider) {
     $locationProvider.html5Mode(false);
     $locationProvider.hashPrefix('');
     $routeProvider
