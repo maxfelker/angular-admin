@@ -2,47 +2,19 @@
 
 describe('The Crud Form', function () {
 
-  beforeEach(module(
-    'angularAdmin',
-    'template-module'
-  ));
-
   var element;
   var scope;
-  var compile;
+  var $compile;
   var form;
   var input;
   var isolatedScope;
-  var controller;
-  var config;
-
-  beforeEach(inject(function ($rootScope, $compile) {
-
-    scope = $rootScope.$new();
-    compile = $compile;
-    scope.testCreateHandler = jasmine.createSpy('testCreateHandler');
-
-    config = {
-      display: true,
-      actionState: 'create',
-      formName: 'myCrudForm',
-      crudObject: {
-        name: {
-          type: 'text',
-          required: true,
-          value: ''
-        }
-      }
-    };
-
-  }));
 
   function createFormObject() {
-    isolatedScope.myCrudForm = {
+    isolatedScope.testForm = {
       $valid: false,
       $invalid: false,
       $submitted: false,
-      $name: 'myCrudForm',
+      $name: 'testForm',
       name: {
         $name: 'name',
         $invalid: false,
@@ -57,9 +29,9 @@ describe('The Crud Form', function () {
 
   function generateDirectiveTemplate() {
     var template = '<crud-form ';
-    template += 'form-name="' + config.formName + '" ';
-    template += 'action-state="' + config.actionState + '" ';
-    //template += 'crud-object="' + config.crudObject + '" ';
+    template += 'form-name="testForm" ';
+    template += 'action-state="actionState" ';
+    template += 'crud-object="testCrudObject" ';
     template += 'create-handler="testCreateHandler()" ';
     template += '></crud-form>';
     return template;
@@ -67,40 +39,57 @@ describe('The Crud Form', function () {
 
   function compileDirective() {
     var template = angular.element(generateDirectiveTemplate());
-    element = compile(template)(scope);
+    element = $compile(template)(scope);
     scope.$digest();
     form = angular.element(element.find('form')[0]);
     input = angular.element(form.find('input')[0]);
-    controller = element.controller('crudForm');
     isolatedScope = element.isolateScope();
     createFormObject();
+    scope.$apply();
   }
+
+  beforeEach(module('angularAdmin', 'ngHtml2Js'));
+
+  beforeEach(inject(function ($injector) {
+
+    $compile = $injector.get('$compile');
+    scope = $injector.get('$rootScope');
+    scope.actionState = 'create';
+    scope.testCrudObject = {
+      name: {
+        type: 'text',
+        placeholder: 'Tom Jones',
+        value: '',
+        required: true,
+      }
+    };
+  }));
 
   describe('when submitting the form', function () {
 
-    beforeEach(inject(function () {
+    beforeEach(function () {
       compileDirective();
-
       spyOn(isolatedScope, 'validateForm').and.callThrough();
       spyOn(isolatedScope, 'createHandler').and.callThrough();
       spyOn(isolatedScope, 'updateHandler').and.callThrough();
-      isolatedScope.submitForm();
-    }));
+    });
 
     it('should validate the form', function () {
+      isolatedScope.submitForm();
       expect(isolatedScope.validateForm).toHaveBeenCalled();
     });
 
     describe('when validating the form', function () {
 
       it('should return if its valid or not', function () {
+        isolatedScope.submitForm();
         var validTest = isolatedScope.validateForm();
-        expect(validTest).toEqual(isolatedScope.myCrudForm.$valid);
+        expect(validTest).toEqual(isolatedScope.testForm.$valid);
       });
 
       it('should display an error', function () {
-        isolatedScope.myCrudForm.$valid = false;
-        isolatedScope.myCrudForm.$submitted = true;
+        isolatedScope.submitForm();
+        isolatedScope.testForm.$submitted = true;
         expect(isolatedScope.whenErrorsArePresent()).toBeTruthy();
       });
 
@@ -109,7 +98,7 @@ describe('The Crud Form', function () {
     describe('when the form is valid', function () {
 
       it('should determine the handler to call by using the action state passed to the form', function () {
-        isolatedScope.myCrudForm.$valid = true;
+        isolatedScope.testForm.$valid = true;
         isolatedScope.submitForm();
         expect(isolatedScope.createHandler).toHaveBeenCalled();
       });
@@ -119,11 +108,11 @@ describe('The Crud Form', function () {
 
   describe('when determing a class for the field', function () {
 
-    beforeEach(inject(function () {
+    beforeEach(function () {
       compileDirective();
-      isolatedScope.myCrudForm.name.$setViewValue('');
+      isolatedScope.testForm.name.$setViewValue('');
       scope.$digest();
-    }));
+    });
 
     it('should return no class initially', function () {
       var classTest = isolatedScope.determineFormGroupClass('name');
@@ -131,9 +120,9 @@ describe('The Crud Form', function () {
     });
 
     it('should return has-success when valid', function () {
-      isolatedScope.myCrudForm.name.$setViewValue('ABC123');
-      isolatedScope.myCrudForm.name.$valid = true;
-      isolatedScope.myCrudForm.name.$dirty = true;
+      isolatedScope.testForm.name.$setViewValue('ABC123');
+      isolatedScope.testForm.name.$valid = true;
+      isolatedScope.testForm.name.$dirty = true;
       isolatedScope.submitForm();
 
       var classTest = isolatedScope.determineFormGroupClass('name');
@@ -141,19 +130,19 @@ describe('The Crud Form', function () {
     });
 
     it('should return has-failure when required and dirty', function () {
-      isolatedScope.myCrudForm.name.$setViewValue('');
-      isolatedScope.myCrudForm.name.$dirty = true;
-      isolatedScope.myCrudForm.name.$invalid = true;
-      isolatedScope.myCrudForm.name.$valid = false;
+      isolatedScope.testForm.name.$setViewValue('');
+      isolatedScope.testForm.name.$dirty = true;
+      isolatedScope.testForm.name.$invalid = true;
+      isolatedScope.testForm.name.$valid = false;
       var classTest = isolatedScope.determineFormGroupClass('name');
       expect(classTest).toEqual('has-warning');
     });
 
     it('should return has-failure when required and submmited', function () {
-      isolatedScope.myCrudForm.name.$setViewValue('');
-      isolatedScope.myCrudForm.name.$invalid = true;
-      isolatedScope.myCrudForm.name.$valid = false;
-      isolatedScope.myCrudForm.$submitted = true;
+      isolatedScope.testForm.name.$setViewValue('');
+      isolatedScope.testForm.name.$invalid = true;
+      isolatedScope.testForm.name.$valid = false;
+      isolatedScope.testForm.$submitted = true;
       var classTest = isolatedScope.determineFormGroupClass('name');
       expect(classTest).toEqual('has-warning');
     });

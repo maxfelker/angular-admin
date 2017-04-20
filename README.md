@@ -27,14 +27,14 @@ $ bower install
 Run the app locally at http://localhost:9000
 
 ```bash
-$ grunt serve
+$ gulp serve
 ```
 
 ### Build
 To build and run locally
 
 ```bash
-$ grunt build
+$ gulp build
 $ cd dist/;
 $ python -m SimpleHTTPServer
 ```
@@ -51,7 +51,7 @@ This will run the JSON mock API at [http://localhost:3000](http://localhost:3000
 
 ## Testing
 
-Running `grunt test` will run the unit tests with karma. `grunt serve` will run this in real time.
+Running `gulp test` will run the unit tests with karma. `gulp serve` will run this in real time.
 
 Coverage is reported in `coverage/` and an HTML report can be found at `coverage/report-html/index.html`
 

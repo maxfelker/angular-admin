@@ -44,9 +44,9 @@ angular.module('angularAdmin')
     };
 
     return {
-      link: controller,
+      controller: controller,
       scope: {
-        actionState: '@',
+        actionState: '=',
         formName: '@',
         recordName: '@',
         crudObject: '=',

@@ -3,7 +3,7 @@
 // Generated on 2016-01-09 using
 // generator-karma 1.0.0
 
-module.exports = function(config) {
+module.exports = function (config) {
   'use strict';
 
   config.set({
@@ -41,7 +41,7 @@ module.exports = function(config) {
 
     ngHtml2JsPreprocessor: {
       stripPrefix: 'app',
-      moduleName: 'template-module'
+      moduleName: 'ngHtml2Js'
     },
 
     ngJson2JsPreprocessor: {
@@ -63,8 +63,6 @@ module.exports = function(config) {
       'bower_components/angular-sanitize/angular-sanitize.js',
       'bower_components/angular-touch/angular-touch.js',
       'bower_components/ngToast/dist/ngToast.js',
-      'bower_components/bootstrap-sass/assets/javascripts/bootstrap.js',
-      'bower_components/bootstrap/dist/js/bootstrap.js',
       'bower_components/angular-mocks/angular-mocks.js',
       // endbower
       'app/scripts/**/*.js',
