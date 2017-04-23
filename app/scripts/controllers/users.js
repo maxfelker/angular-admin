@@ -41,7 +41,7 @@ angular.module('angularAdmin')
         id: user.id,
         name: !user.name.first ? user.name : user.name.first + ' ' + user.name.last,
         email: user.email
-      }
+      };
     };
 
     /* Get Users */
@@ -56,7 +56,7 @@ angular.module('angularAdmin')
     this.getUsers = function () {
       return $this.getRecords().then(function (response) {
         var users = angular.copy(response);
-        $scope.users = users.map($this.transformUser)
+        $scope.users = users.map($this.transformUser);
       });
     };
 

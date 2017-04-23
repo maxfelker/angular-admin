@@ -8,7 +8,7 @@
  * Controller of the angularAdmin
  */
 angular.module('angularAdmin')
-  .controller('CrudBaseControllerCtrl', function ($scope, crudService, messageService, $q, $routeParams, $location) {
+  .controller('CrudBaseControllerCtrl', function ($scope, crudService, messageService, $q, $routeParams) {
 
     var $this = this;
 
@@ -34,7 +34,6 @@ angular.module('angularAdmin')
 
     this.errorHandler = function (errorResponse) {
       var url = '<b>' + errorResponse.config.url + '</b>';
-      var method = '<b>' + errorResponse.config.method + '</b>';
       messageService.error('There was an issue with ' + url);
     };
 
