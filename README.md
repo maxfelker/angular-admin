@@ -1,4 +1,4 @@
-Angular Boilerplate Admin
+Angular Admin 0.2.0
 ===
 
 This project is generated with [yo angular generator](https://github.com/yeoman/generator-angular)
@@ -18,12 +18,10 @@ $ cd my-project/
 Then install dependencies:
 
 ```bash
-$ npm install
-$ bower install
+$ npm i
 ```
 
-### Running the App
-
+### Running the App in Development
 Run the app locally at http://localhost:9000
 
 ```bash
@@ -31,12 +29,17 @@ $ gulp serve
 ```
 
 ### Build
-To build and run locally
+Run the build process manually
 
 ```bash
 $ gulp build
-$ cd dist/;
-$ python -m SimpleHTTPServer
+```
+
+### Run in Production Mode
+To build in production mode and run locally at http://localhost:9000
+
+```bash
+$ gulp
 ```
 
 ### Mock JSON Server
