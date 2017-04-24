@@ -1,7 +1,7 @@
 {
   "name": "angularAdmin",
   "private": true,
-  "version": "0.1.0",
+  "version": "0.2.0",
   "devDependencies": {
     "autoprefixer-core": "^6.0.1",
     "gulp": "^3.9.0",
