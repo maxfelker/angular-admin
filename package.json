@@ -6,6 +6,7 @@
     "autoprefixer-core": "^6.0.1",
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "3.1.1",
+    "gulp-bower": "0.0.13",
     "gulp-cache": "^0.4.6",
     "gulp-connect": "^5.0.0",
     "gulp-filter": "^2.0.2",
@@ -45,8 +46,7 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "gulp serve",
-    "test": "gulp test",
+    "start": "gulp",
     "postinstall": "bower install"
   }
 }
